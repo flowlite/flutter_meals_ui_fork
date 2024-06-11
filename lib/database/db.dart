@@ -1,14 +1,17 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+// import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path/path.dart';
 
 class Db {
   Database? db;
   Future open() async {
-    sqfliteFfiInit();
-    var databasePath = await databaseFactoryFfi.getDatabasesPath();
-    String path = join(databasePath, 'mealsDB.db');
-    DatabaseFactory databaseFactory = databaseFactoryFfi;
+    // sqfliteFfiInit();
+    // var databasePath = await databaseFactoryFfi.getDatabasesPath();
+    // String path = join(databasePath, 'mealsDB.db');
+    // DatabaseFactory databaseFactory = databaseFactoryFfi;
+
+    String databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'mealsDB.db');
 
     db = await databaseFactory.openDatabase(
       path,
